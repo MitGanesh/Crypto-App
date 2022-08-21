@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { CgSun, CgMoon, CgSearch } from "react-icons/cg";
 import searchContext from '../Context/searchContext';
+import { mobile } from '../responsive';
 
 const Container = styled.div`
     margin: 0;
@@ -10,14 +11,16 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     height: 65px;
-    background: ${props => props.mode ? '#242526' : 'white'};
-    /* border: 1px solid black; */
+    background: ${props => props.mode ? '#242526' : 'white'};   
     box-shadow: 0 2px 17px rgb(0 0 0 / 7%);
 `
 const Left = styled.div`
     flex: 1;
     display: flex;
-    /* font-family: 'Major Mono Display', monospace; */
+
+    ${mobile({
+        display: 'none',
+    })}
 `
 const Center = styled.div`
     flex: 2;
