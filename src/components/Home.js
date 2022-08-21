@@ -8,7 +8,38 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 80px;
+    margin-top: 100px;
+`
+
+const Legend = styled.div`
+    padding: 24px 0px;
+    display: flex;
+    width: 60%;
+    border: 1px solid black;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 20px 20px 0px 0px;
+    color: ${props => props.mode ? '#242526' : 'white'};
+    background: ${props => props.mode ? 'white' : '#242526'};
+    margin-bottom: 25px;
+`
+const Left = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+const Title = styled.div``
+const Center = styled.div`
+    flex: 3;
+    display: flex;
+    justify-content: space-between;
+`
+const Right = styled.div`
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 const Home = () => {
@@ -46,6 +77,14 @@ const Home = () => {
 
     return (
         <Container>
+            <Legend mode={mode}>
+                <Left>SYM.</Left>
+                <Center>
+                    <Title>NAME</Title>
+                    <Title>CURRENT PRICE</Title>
+                </Center>
+                <Right>MARKET CAP.</Right>
+            </Legend>
             {data && searchData.map((item) => {
                 return <Card key={item.id} items={item} mode={mode} />
             })}
