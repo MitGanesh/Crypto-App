@@ -10,7 +10,6 @@ const Container = styled.div`
     align-items: center;
     margin-top: 100px;
 `
-
 const Legend = styled.div`
     padding: 24px 0px;
     display: flex;
