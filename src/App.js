@@ -1,10 +1,19 @@
 import './App.css';
+import React from 'react';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+import SearchProvider from './Context/searchProvider';
 
 function App() {
+  // const [mode, setMode] = useState(false);
+
   return (
-    <div >
-      Hello World1
-    </div>
+    <SearchProvider>
+      <div >
+        <Navbar />
+        <Home />
+      </div>
+    </SearchProvider>
   );
 }
 
