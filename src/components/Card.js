@@ -1,9 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs";
+import { mobile } from '../responsive';
 
 const Wrapper = styled.div`
     width: 60%;
+
+    ${mobile({
+        width: '95%',
+    })}
 `
 
 const Container = styled.div`
@@ -12,15 +17,27 @@ const Container = styled.div`
     display: flex;
     height: 50px;
     align-items: center;
+
+    ${mobile({
+        padding: '12px 12px'
+    })}
 `
 const Left = styled.div`
     flex: 1;
     display: flex;
     align-items: center;
+
+    ${mobile({
+        flex: 1,
+    })}
 `
 const Wrap = styled.div`
     display: flex;
     flex-direction: column;
+
+    ${mobile({
+        fontSize: '12px',
+    })}
 `
 const Name = styled.div`
     font-family: 'Lato', sans-serif;
@@ -28,16 +45,28 @@ const Name = styled.div`
     margin-bottom: 5px;
     font-weight: 500;
     color: ${props => props.mode ? 'white' : 'black'};
+
+    ${mobile({
+        fontSize: '14px',
+    })}
 `
 const Symbol = styled.div`
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     color: #d0d2d5;
+
+    ${mobile({
+        fontSize: '12px',
+    })}
 `
 
 const CurrentValue = styled.div`
     font-family: 'Lato', sans-serif;
     color: ${props => props.mode ? 'white' : 'black'};
+
+    ${mobile({
+        fontSize: '14px',
+    })}
 `
 const Growth = styled.div`
     font-family: 'Lato', sans-serif;
@@ -50,11 +79,22 @@ const Image = styled.img`
     width: 40px;
     height: 40px;
     margin: 0 auto;
+
+    ${mobile({
+        width: '30px',
+        height: '30px',
+    })}
 `
 const Center = styled.div`
     flex: 3;
     display: flex;
     justify-content: space-between;
+
+    ${mobile({
+        flex: 4,
+        justifyContent: 'space-around',
+
+    })}
 `
 const Right = styled.div`
     flex: 2;
@@ -62,6 +102,10 @@ const Right = styled.div`
     justify-content: center;
     align-items: center;
     color: ${props => props.mode ? 'white' : 'black'};
+
+    ${mobile({
+        display: 'none',
+    })}
 `
 const HR = styled.hr`
     border: 1px solid #dadce0;

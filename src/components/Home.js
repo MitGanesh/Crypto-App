@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import searchContext from '../Context/searchContext';
+import { mobile } from '../responsive';
 import Card from './Card';
 
 const Container = styled.div`
@@ -14,31 +15,46 @@ const Legend = styled.div`
     padding: 24px 0px;
     display: flex;
     width: 60%;
-    border: 1px solid black;
     font-size: 18px;
     font-weight: 500;
     border-radius: 20px 20px 0px 0px;
     color: ${props => props.mode ? '#242526' : 'white'};
     background: ${props => props.mode ? 'white' : '#242526'};
     margin-bottom: 25px;
+
+    ${mobile({
+        width: '95%',
+        fontSize: '14px',
+        padding: '24px 10px',
+
+    })}
 `
 const Left = styled.div`
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 `
 const Title = styled.div``
 const Center = styled.div`
     flex: 3;
     display: flex;
     justify-content: space-between;
+
+    ${mobile({
+        justifyContent: 'space-around',
+    })}
 `
 const Right = styled.div`
     flex: 2;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    ${mobile({
+        display: 'none',
+    })}
 `
 
 const Home = () => {
