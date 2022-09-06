@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs";
 import { mobile } from '../responsive';
+import { motion } from 'framer-motion';
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
     width: 60%;
 
     ${mobile({
-        width: '95%',
-    })}
+    width: '95%',
+})}
 `
 
 const Container = styled.div`
@@ -19,8 +20,8 @@ const Container = styled.div`
     align-items: center;
 
     ${mobile({
-        padding: '12px 12px'
-    })}
+    padding: '12px 12px'
+})}
 `
 const Left = styled.div`
     flex: 1;
@@ -28,16 +29,16 @@ const Left = styled.div`
     align-items: center;
 
     ${mobile({
-        flex: 1,
-    })}
+    flex: 1,
+})}
 `
 const Wrap = styled.div`
     display: flex;
     flex-direction: column;
 
     ${mobile({
-        fontSize: '12px',
-    })}
+    fontSize: '12px',
+})}
 `
 const Name = styled.div`
     font-family: 'Lato', sans-serif;
@@ -47,8 +48,8 @@ const Name = styled.div`
     color: ${props => props.mode ? 'white' : 'black'};
 
     ${mobile({
-        fontSize: '14px',
-    })}
+    fontSize: '14px',
+})}
 `
 const Symbol = styled.div`
     font-family: 'Lato', sans-serif;
@@ -56,8 +57,8 @@ const Symbol = styled.div`
     color: #d0d2d5;
 
     ${mobile({
-        fontSize: '12px',
-    })}
+    fontSize: '12px',
+})}
 `
 
 const CurrentValue = styled.div`
@@ -65,8 +66,8 @@ const CurrentValue = styled.div`
     color: ${props => props.mode ? 'white' : 'black'};
 
     ${mobile({
-        fontSize: '14px',
-    })}
+    fontSize: '14px',
+})}
 `
 const Growth = styled.div`
     font-family: 'Lato', sans-serif;
@@ -81,9 +82,9 @@ const Image = styled.img`
     margin: 0 auto;
 
     ${mobile({
-        width: '30px',
-        height: '30px',
-    })}
+    width: '30px',
+    height: '30px',
+})}
 `
 const Center = styled.div`
     flex: 3;
@@ -91,10 +92,10 @@ const Center = styled.div`
     justify-content: space-between;
 
     ${mobile({
-        flex: 4,
-        justifyContent: 'space-around',
+    flex: 4,
+    justifyContent: 'space-around',
 
-    })}
+})}
 `
 const Right = styled.div`
     flex: 2;
@@ -104,8 +105,8 @@ const Right = styled.div`
     color: ${props => props.mode ? 'white' : 'black'};
 
     ${mobile({
-        display: 'none',
-    })}
+    display: 'none',
+})}
 `
 const HR = styled.hr`
     border: 1px solid #dadce0;
@@ -120,8 +121,29 @@ const Card = (props) => {
         return '₹' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
 
+    const cardTransition = {
+        start: {
+            x: -10,
+            opacity: 0,
+        },
+        mid: {
+            x: 0,
+            opacity: 1,
+            transition: {
+                delay: 0.7,
+            }
+        }
+    }
+
     return (
-        <Wrapper>
+        <Wrapper
+            variants={cardTransition}
+            initial="start"
+            animate="mid"
+            whileHover={{
+                scale: 1.05,
+            }}
+        >
             <Container>
                 <Left>
                     <Image src={image} />

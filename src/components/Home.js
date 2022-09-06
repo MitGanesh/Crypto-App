@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import searchContext from '../Context/searchContext';
 import { mobile } from '../responsive';
 import Card from './Card';
+import { motion } from 'framer-motion'
 
 const Container = styled.div`
     display: flex;
@@ -11,7 +12,7 @@ const Container = styled.div`
     align-items: center;
     margin-top: 100px;
 `
-const Legend = styled.div`
+const Legend = styled(motion.div)`
     padding: 24px 0px;
     display: flex;
     width: 60%;
@@ -23,11 +24,11 @@ const Legend = styled.div`
     margin-bottom: 25px;
 
     ${mobile({
-        width: '95%',
-        fontSize: '14px',
-        padding: '24px 10px',
+    width: '95%',
+    fontSize: '14px',
+    padding: '24px 10px',
 
-    })}
+})}
 `
 const Left = styled.div`
     flex: 1;
@@ -43,8 +44,8 @@ const Center = styled.div`
     justify-content: space-between;
 
     ${mobile({
-        justifyContent: 'space-around',
-    })}
+    justifyContent: 'space-around',
+})}
 `
 const Right = styled.div`
     flex: 2;
@@ -53,8 +54,8 @@ const Right = styled.div`
     align-items: center;
 
     ${mobile({
-        display: 'none',
-    })}
+    display: 'none',
+})}
 `
 
 const Home = () => {
@@ -63,6 +64,21 @@ const Home = () => {
 
     const context = useContext(searchContext);
     const { input, mode } = context;
+
+    const legendTransition = {
+        start: {
+            y: 500,
+            scale: 0.2,
+        },
+        mid: {
+            y: 0,
+            scale: 1,
+            transition: {
+                type: 'spring',
+                stiffness: 40,
+            }
+        }
+    }
 
     useEffect(() => {
         const makeReq = async () => {
@@ -92,7 +108,11 @@ const Home = () => {
 
     return (
         <Container>
-            <Legend mode={mode}>
+            <Legend mode={mode}
+                variants={legendTransition}
+                initial="start"
+                animate="mid"
+            >
                 <Left>SYM.</Left>
                 <Center>
                     <Title>NAME</Title>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { CgSun, CgMoon, CgSearch } from "react-icons/cg";
 import searchContext from '../Context/searchContext';
 import { mobile } from '../responsive';
+import { motion } from 'framer-motion'
 
 const Container = styled.div`
     margin: 0;
@@ -15,17 +16,17 @@ const Container = styled.div`
     box-shadow: 0 2px 17px rgb(0 0 0 / 7%);
 
     ${mobile({
-        padding: '5px 10px',
-        width: '100%',
-    })}
+    padding: '5px 10px',
+    width: '100%',
+})}
 `
 const Left = styled.div`
     flex: 1;
     display: flex;
 
     ${mobile({
-        display: 'none',
-    })}
+    display: 'none',
+})}
 `
 const Center = styled.div`
     flex: 2;
@@ -34,8 +35,8 @@ const Center = styled.div`
     font-family: 'Major Mono Display', monospace;
 
     ${mobile({
-        flex: 0,
-    })}
+    flex: 0,
+})}
 
 `
 const Right = styled.div`
@@ -44,17 +45,17 @@ const Right = styled.div`
     display: flex;
 
     ${mobile({
-        flex: 0,
-    })}
+    flex: 0,
+})}
 `
 const Logo = styled.span`
     cursor: pointer;
     color: ${props => props.mode ? 'white' : 'black'};
 
     ${mobile({
-        merginLeft: '0px',
-        fontSize: '22px',
-    })}
+    merginLeft: '0px',
+    fontSize: '22px',
+})}
 `
 const Heading = styled.p`
     margin-right: 10px;
@@ -92,9 +93,9 @@ const SearchBar = styled.div`
     align-items: center;
 
     ${mobile({
-        margin: '0px 8px',
-        padding: '0px 10px',
-    })}
+    margin: '0px 8px',
+    padding: '0px 10px',
+})}
 `
 const Input = styled.input`
     outline: none;
@@ -102,11 +103,11 @@ const Input = styled.input`
     background: none;
 
     ${mobile({
-        flex: 1,
-        width: '150px',
-    })}
+    flex: 1,
+    width: '150px',
+})}
 `
-const Themes = styled.div`
+const Themes = styled(motion.div)`
     display: flex;
     justify-content: center;
     flex: 1;
@@ -129,9 +130,9 @@ const Navbar = () => {
     return (
         <Container className='fixed-top' mode={mode}>
             <Left>
-                <Heading mode={mode} bold={600}>HOME</Heading>
-                <Heading mode={mode}>ABOUT</Heading>
-                <Heading mode={mode}>CONTACT</Heading>
+                <Heading mode={mode} >HOME</Heading>
+                {/* <Heading mode={mode}>ABOUT</Heading>
+                <Heading mode={mode}>CONTACT</Heading> */}
             </Left>
             <Center>
                 <Logo mode={mode}>
@@ -143,7 +144,14 @@ const Navbar = () => {
                     <Input placeholder='Seacrh' onChange={(e) => handleInput(e.target.value)} />
                     <CgSearch style={{ fontSize: '18px' }} />
                 </SearchBar>
-                <Themes>
+                <Themes
+                    animate={{
+                        rotate: 360,
+                    }}
+                    transition={{
+                        duration: 2
+                    }}
+                >
                     {!mode ? (
 
                         <Mod mode={mode} onClick={handleMode}>
