@@ -10,11 +10,11 @@ function App() {
   const [loding, setLoding] = useState(true);
 
   useEffect(() => {
+    // eslint-disable-next-line
     setTimeout(() => {
-      // eslint-disable-next-line
-      setLoding(!loding);
+      setLoding(prev => false);
     }, 2000);
-  })
+  },[])
 
 
   return (
