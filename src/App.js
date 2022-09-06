@@ -11,9 +11,10 @@ function App() {
 
   useEffect(() => {
     setTimeout(() => {
+      // eslint-disable-next-line
       setLoding(!loding);
     }, 2000);
-  }, [])
+  })
 
 
   return (
