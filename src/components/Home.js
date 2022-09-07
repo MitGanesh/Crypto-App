@@ -20,7 +20,7 @@ const Legend = styled(motion.div)`
     font-weight: 500;
     border-radius: 20px 20px 0px 0px;
     color: ${props => props.mode ? '#242526' : 'white'};
-    background: ${props => props.mode ? 'white' : '#242526'};
+    background: ${props => props.mode ? '#ebedf0' : '#242526'};
     margin-bottom: 25px;
 
     ${mobile({
@@ -67,15 +67,12 @@ const Home = () => {
 
     const legendTransition = {
         start: {
-            y: 500,
-            scale: 0.2,
+            x: 200,
         },
         mid: {
-            y: 0,
-            scale: 1,
+            x: 0,
             transition: {
-                type: 'spring',
-                stiffness: 40,
+                duration:0.03,
             }
         }
     }
@@ -120,8 +117,8 @@ const Home = () => {
                 </Center>
                 <Right>MARKET CAP.</Right>
             </Legend>
-            {data && searchData.map((item) => {
-                return <Card key={item.id} items={item} mode={mode} />
+            {data && searchData.map((item,i) => {
+                return <Card i={i} key={item.id} items={item} mode={mode} />
             })}
         </Container>
     )

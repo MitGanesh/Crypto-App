@@ -123,14 +123,15 @@ const Card = (props) => {
 
     const cardTransition = {
         start: {
-            x: -10,
+            x: -200,
             opacity: 0,
         },
         mid: {
             x: 0,
             opacity: 1,
             transition: {
-                delay: 0.7,
+                delay: 0.05*props.i,
+                duration:0.3,
             }
         }
     }

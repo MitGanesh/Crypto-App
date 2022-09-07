@@ -31,7 +31,7 @@ const Left = styled.div`
 const Center = styled.div`
     flex: 2;
     text-align: center;
-    font-size: 24px;
+    font-size: 30px;
     font-family: 'Major Mono Display', monospace;
 
     ${mobile({
@@ -59,7 +59,7 @@ const Logo = styled.span`
 `
 const Heading = styled.p`
     margin-right: 10px;
-    font-size: 16px;
+    font-size: 22px;
     cursor: pointer;
     font-weight: ${props => props.bold};
     display: flex;
@@ -130,7 +130,7 @@ const Navbar = () => {
     return (
         <Container className='fixed-top' mode={mode}>
             <Left>
-                <Heading mode={mode} >HOME</Heading>
+                <Heading bold={200} mode={mode} >HOME</Heading>
                 {/* <Heading mode={mode}>ABOUT</Heading>
                 <Heading mode={mode}>CONTACT</Heading> */}
             </Left>
