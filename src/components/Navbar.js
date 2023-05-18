@@ -7,13 +7,14 @@ import { motion } from 'framer-motion'
 
 const Container = styled.div`
     margin: 0;
-    padding: 5px 15px;
+    padding: 10px 120px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 65px;
     background: ${props => props.mode ? '#242526' : 'white'};   
     box-shadow: 0 2px 17px rgb(0 0 0 / 7%);
+    z-index: 10;
 
     ${mobile({
     padding: '5px 10px',
@@ -22,20 +23,28 @@ const Container = styled.div`
 `
 const Left = styled.div`
     flex: 1;
-    display: flex;
-
-    ${mobile({
-    display: 'none',
-})}
-`
-const Center = styled.div`
-    flex: 2;
-    text-align: center;
     font-size: 30px;
-    font-family: 'Major Mono Display', monospace;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    /* font-family: 'Major Mono Display', monospace; */
+    background: linear-gradient(200deg, #ff00cc, #3333ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
 
     ${mobile({
     flex: 0,
+})}
+`
+const Center = styled.div`
+    flex: 1;
+    display: flex;
+    gap: 14px;
+
+    ${mobile({
+    display: 'none',
 })}
 
 `
@@ -59,7 +68,7 @@ const Logo = styled.span`
 `
 const Heading = styled.p`
     margin-right: 10px;
-    font-size: 22px;
+    font-size: 16px;
     cursor: pointer;
     font-weight: ${props => props.bold};
     display: flex;
@@ -130,14 +139,15 @@ const Navbar = () => {
     return (
         <Container className='fixed-top' mode={mode}>
             <Left>
-                <Heading bold={200} mode={mode} >HOME</Heading>
-                {/* <Heading mode={mode}>ABOUT</Heading>
-                <Heading mode={mode}>CONTACT</Heading> */}
+                <Logo mode={mode}>
+                    CRYPTO
+                </Logo>
             </Left>
             <Center>
-                <Logo mode={mode}>
-                    cRypTo
-                </Logo>
+                <Heading bold={200} mode={mode}>HOME</Heading>
+                <Heading bold={200} mode={mode}>MARKET</Heading>
+                <Heading bold={200} mode={mode}>WHY US</Heading>
+                <Heading bold={200} mode={mode}>JOIN</Heading>
             </Center>
             <Right>
                 <SearchBar>
