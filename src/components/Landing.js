@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components';
 import searchContext from '../Context/searchContext';
 import img1 from '../Images/img1.png'
+import { mobile } from '../responsive';
 
 const Container = styled.div`
   width: 100%;
@@ -23,6 +24,10 @@ const FloatingImg1 = styled.img`
   left: 80px;
   z-index: -5;
   opacity: 0.5;
+
+  ${mobile({
+    left: '-135px',
+  })}
 `
 const TitleBox = styled.div`
   display: flex;
@@ -35,6 +40,10 @@ const H1 = styled.div`
   font-weight: 900;
   font-family: 'Raleway', sans-serif;
   color: ${props => !props.mode ? '#242526' : 'white'};
+
+  ${mobile({
+    fontSize: '55px',
+  })}
 `
 const SubH1 = styled.div`
   display: inline;
@@ -54,6 +63,10 @@ const GridContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   padding: 38px 0px;
+
+  ${mobile({
+    flexDirection: 'column',
+  })}
 `
 const GridBox = styled.div`
   flex: 1;

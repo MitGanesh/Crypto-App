@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import SearchProvider from './Context/searchProvider';
 import Landing from './components/Landing';
 import Benefits from './components/WhyUs';
+import JoinUs from './components/JoinUs';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Landing />
       <Home />
       <Benefits />
+      <JoinUs />
     </SearchProvider>
   );
 }

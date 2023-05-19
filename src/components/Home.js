@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { CgSearch } from "react-icons/cg";
 import searchContext from '../Context/searchContext';
 import { mobile } from '../responsive';
 import Card from './Card';
@@ -11,24 +12,33 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 100px 0px;
+
+    ${mobile({
+        padding: '34px 0px',
+    })}
 `
 
 const Box = styled.div`
     width: 80%;
-    height: 80vh;
+    height: 71vh;
     box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 
     overflow-y: scroll;
 
     ${mobile({
     width: '95%',
-    })}
+})}
 `
 const Heading = styled.h1`
-    padding: 32px 0px;
+    margin: 0;
     text-transform: uppercase;
     font-weight: 700;
     color: ${props => !props.mode ? '#242526' : 'white'};
+
+    ${mobile({
+        textAlign: 'center',
+        fontSize: '24px'
+    })}
 `
 const Legend = styled(motion.div)`
     padding: 24px 0px;
@@ -77,12 +87,58 @@ const Right = styled.div`
 })}
 `
 
+const TitleBar = styled.div`
+    margin: auto;
+    padding: 42px 0px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 26.5rem; */
+
+    ${mobile({
+        flexDirection: 'column',
+        gap: '14px',
+        padding: '18px 0px'
+    })}
+`
+
+const SearchBar = styled.div`
+    margin: 0px 15px;
+    padding: 10px 35px;
+    border-radius: 50px;
+    background-color: #ebedf0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ${mobile({
+    width: '100%',
+    margin: '10px 0px',
+    padding: '10px 30px',
+})}
+`
+const Input = styled.input`
+    outline: none;
+    border: none;
+    width: 25vw;
+    background: none;
+    font-size: 15px;
+    font-weight: 200;
+
+    ${mobile({
+    flex: 1,
+    width: '100%',
+    fontSize: '16px'
+})}
+`
+
 const Home = () => {
     const [data, setData] = useState([]);
     const [searchData, setSearchData] = useState([]);
 
     const context = useContext(searchContext);
-    const { input, mode, setMainData } = context;
+    const { input, mode, setMainData, handleInput } = context;
 
     const legendTransition = {
         start: {
@@ -125,8 +181,14 @@ const Home = () => {
     }, [data, input]);
 
     return (
-        <Container>
-            <Heading mode={mode}>Today's Crypto Prices</Heading>
+        <Container id='market'>
+            <TitleBar>
+                <Heading mode={mode}>Today's Crypto Prices</Heading>
+                <SearchBar>
+                    <Input placeholder='Seacrh' onChange={(e) => handleInput(e.target.value)} />
+                    <CgSearch style={{ fontSize: '18px' }} />
+                </SearchBar>
+            </TitleBar>
             <Legend mode={mode}
                 variants={legendTransition}
                 initial="start"

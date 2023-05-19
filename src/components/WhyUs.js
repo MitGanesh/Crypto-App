@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import { FaWallet, FaPencilRuler, FaSatelliteDish, FaChessKnight, FaBoxes } from "react-icons/fa";
 import { CgBolt } from "react-icons/cg";
 import searchContext from '../Context/searchContext';
+import img from '../Images/img4.png'
+import { mobile } from '../responsive';
 
 
 const Container = styled.div`
   width: 100%;
-  padding: 32px 0px;
+  padding: 88px 0px;
 `
 const Heading = styled.h1`
+  padding-bottom: 32px;
   text-align: center;
   text-transform: uppercase;
   font-weight: 700;
@@ -19,15 +22,30 @@ const Box = styled.div`
   width: 80%;
   margin: auto;
   display: flex;
-  /* border: 1px solid red; */
-  gap: 12px;
+  row-gap: 16px;
+
+  ${mobile({
+    flexDirection: 'column',
+  })}
 `
 const Columns = styled.div`
   flex: 1;
   padding: 18px 0px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+`
+
+const ImageWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden; */
+  /* border:  1px solid red; */
+  background-image: url(${img});
+  object-fit: cover;
+  background-position: center;
 `
 
 const Card = styled.div`
@@ -38,6 +56,10 @@ const Card = styled.div`
   border-radius: 18px;
   background-color: ${props => !props.mode ? 'white' : 'black'};
   color: ${props => !props.mode ? 'black' : 'white'};
+
+  ${mobile({
+    minWidth: '340px'
+  })}
 `
 const LestSection = styled.div`
 
@@ -60,6 +82,7 @@ const RightSection = styled.div`
 const CardTitle = styled.h2`
   margin: 0;
   font-weight: 600;
+  font-size: 26px;
 `
 const CardInfo = styled.p`
   margin: 0;
@@ -70,8 +93,8 @@ const Benefits = () => {
   const { mode } = context;
 
   return (
-    <Container>
-      <Heading mode={mode}>Why Us</Heading>
+    <Container id='why-crypto'>
+      <Heading mode={mode}>Why Crypto</Heading>
       <Box>
         <Columns>
           <Card mode={mode}>
@@ -92,8 +115,8 @@ const Benefits = () => {
               </ImageBox>
             </LestSection>
             <RightSection>
-              <CardTitle>CONNECT YOUR WALLET</CardTitle>
-              <CardInfo>Use Trust Wallet, Metamask or to connect to the app.</CardInfo>
+              <CardTitle>SELECT YOUR QUANTITY</CardTitle>
+              <CardInfo>Upload your crypto and set a title, description and price.</CardInfo>
             </RightSection>
           </Card>
           <Card mode={mode}>
@@ -103,13 +126,13 @@ const Benefits = () => {
               </ImageBox>
             </LestSection>
             <RightSection>
-              <CardTitle>CONNECT YOUR WALLET</CardTitle>
-              <CardInfo>Use Trust Wallet, Metamask or to connect to the app.</CardInfo>
+              <CardTitle>CONFIRM TRANSACTION</CardTitle>
+              <CardInfo>Earn by selling your crypto on our marketplace.</CardInfo>
             </RightSection>
           </Card>
         </Columns>
         <Columns>
-
+          <ImageWrap />
         </Columns>
         <Columns>
           <Card mode={mode}>
@@ -119,8 +142,8 @@ const Benefits = () => {
               </ImageBox>
             </LestSection>
             <RightSection>
-              <CardTitle>CONNECT YOUR WALLET</CardTitle>
-              <CardInfo>Use Trust Wallet, Metamask or to connect to the app.</CardInfo>
+              <CardTitle>RECEIVE YOUR OWN NFTS</CardTitle>
+              <CardInfo>Invest all your crypto at one place on one platform.</CardInfo>
             </RightSection>
           </Card>
           <Card mode={mode}>
@@ -130,8 +153,8 @@ const Benefits = () => {
               </ImageBox>
             </LestSection>
             <RightSection>
-              <CardTitle>CONNECT YOUR WALLET</CardTitle>
-              <CardInfo>Use Trust Wallet, Metamask or to connect to the app.</CardInfo>
+              <CardTitle>TAKE A MARKET TO SELL</CardTitle>
+              <CardInfo>Discover, collect the right crypto collections to buy or sell.</CardInfo>
             </RightSection>
           </Card>
           <Card mode={mode}>
@@ -141,13 +164,13 @@ const Benefits = () => {
               </ImageBox>
             </LestSection>
             <RightSection>
-              <CardTitle>CONNECT YOUR WALLET</CardTitle>
-              <CardInfo>Use Trust Wallet, Metamask or to connect to the app.</CardInfo>
+              <CardTitle>DRIVE YOUR COLLECTION</CardTitle>
+              <CardInfo>We make it easy to Discover, Invest and manage.</CardInfo>
             </RightSection>
           </Card>
         </Columns>
       </Box>
-    </Container>
+    </Container >
   )
 }
 

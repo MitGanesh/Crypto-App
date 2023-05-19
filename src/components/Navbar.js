@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { CgSun, CgMoon, CgSearch } from "react-icons/cg";
+import { CgSun, CgMoon } from "react-icons/cg";
 import searchContext from '../Context/searchContext';
 import { mobile } from '../responsive';
 import { motion } from 'framer-motion'
 
 const Container = styled.div`
     margin: 0;
-    padding: 10px 120px;
+    padding: 10px 140px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 65px;
-    background: ${props => props.mode ? '#242526' : 'white'};   
+    min-height: 85px;
+    background: ${props => props.mode ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)'};   
+    backdrop-filter: blur(10px);
     box-shadow: 0 2px 17px rgb(0 0 0 / 7%);
     z-index: 10;
 
@@ -41,6 +42,7 @@ const Left = styled.div`
 const Center = styled.div`
     flex: 1;
     display: flex;
+    justify-content: center;
     gap: 14px;
 
     ${mobile({
@@ -50,8 +52,8 @@ const Center = styled.div`
 `
 const Right = styled.div`
     flex: 1;
-    text-align: right;
     display: flex;
+    justify-content: end;
 
     ${mobile({
     flex: 0,
@@ -63,18 +65,23 @@ const Logo = styled.span`
 
     ${mobile({
     merginLeft: '0px',
-    fontSize: '22px',
+    fontSize: '28px',
 })}
 `
-const Heading = styled.p`
+const Heading = styled.a`
     margin-right: 10px;
     font-size: 16px;
     cursor: pointer;
+    text-decoration: none;
     font-weight: ${props => props.bold};
     display: flex;
     align-items: center;
     margin-bottom: 0;
     color: ${props => props.mode ? 'white' : 'black'};
+
+    &:hover{
+    color: #2600fc;
+    }
 `
 const Mod = styled.span`
     width: 35px;
@@ -91,35 +98,9 @@ const Mod = styled.span`
         color: black;
     }
 `
-const SearchBar = styled.div`
-    flex: 4;
-    margin: 0px 15px;
-    padding: 5px 15px;
-    border-radius: 50px;
-    background-color: #ebedf0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    ${mobile({
-    margin: '0px 8px',
-    padding: '0px 10px',
-})}
-`
-const Input = styled.input`
-    outline: none;
-    border: none;
-    background: none;
-
-    ${mobile({
-    flex: 1,
-    width: '150px',
-})}
-`
 const Themes = styled(motion.div)`
     display: flex;
-    justify-content: center;
-    flex: 1;
 `
 
 const Navbar = () => {
@@ -144,16 +125,12 @@ const Navbar = () => {
                 </Logo>
             </Left>
             <Center>
-                <Heading bold={200} mode={mode}>HOME</Heading>
-                <Heading bold={200} mode={mode}>MARKET</Heading>
-                <Heading bold={200} mode={mode}>WHY US</Heading>
-                <Heading bold={200} mode={mode}>JOIN</Heading>
+                <Heading href='/#' bold={500} mode={mode}>HOME</Heading>
+                <Heading href='#market' bold={500} mode={mode}>MARKET</Heading>
+                <Heading href='#why-crypto' bold={500} mode={mode}>WHY US</Heading>
+                <Heading href='#join' bold={500} mode={mode}>JOIN</Heading>
             </Center>
             <Right>
-                <SearchBar>
-                    <Input placeholder='Seacrh' onChange={(e) => handleInput(e.target.value)} />
-                    <CgSearch style={{ fontSize: '18px' }} />
-                </SearchBar>
                 <Themes
                     animate={{
                         rotate: 360,
