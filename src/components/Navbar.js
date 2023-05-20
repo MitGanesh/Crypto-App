@@ -106,14 +106,14 @@ const Themes = styled(motion.div)`
 const Navbar = () => {
 
     const context = useContext(searchContext);
-    const { handleInput, mode, setMode } = context;
+    const { mode, setMode } = context;
 
     const handleMode = () => {
         setMode(!mode)
         if (mode) {
             document.body.style.background = 'white';
         } else {
-            document.body.style.background = '#1b1b1d';
+            document.body.style.background = '#181818';
         }
     }
 

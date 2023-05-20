@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components';
 import searchContext from '../Context/searchContext';
-import img1 from '../Images/img1.png'
+import img1 from '../Images/crypto.png'
 import { mobile } from '../responsive';
 
 const Container = styled.div`
@@ -23,7 +23,7 @@ const FloatingImg1 = styled.img`
   top: -160px;
   left: 80px;
   z-index: -5;
-  opacity: 0.5;
+  opacity: 0.6;
 
   ${mobile({
     left: '-135px',
@@ -31,9 +31,14 @@ const FloatingImg1 = styled.img`
 `
 const TitleBox = styled.div`
   display: flex;
+  margin-top: 50px;
   padding: 16px 0px;
   text-align: right;
   justify-content: center;
+
+  ${mobile({
+    marginTop: '0px',
+  })}
 `
 const H1 = styled.div`
   font-size: 60px;

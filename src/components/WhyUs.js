@@ -54,7 +54,7 @@ const Card = styled.div`
   gap: 24px;
   border: 1px solid ${props => !props.mode ? 'black' : '#494451'};
   border-radius: 18px;
-  background-color: ${props => !props.mode ? 'white' : 'black'};
+  background-color: ${props => !props.mode ? 'white' : '#181818'};
   color: ${props => !props.mode ? 'black' : 'white'};
 
   ${mobile({

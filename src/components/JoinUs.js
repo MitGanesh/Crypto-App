@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import searchContext from '../Context/searchContext';
 import { FaTwitter, FaFacebook, FaDiscord, FaYoutube } from 'react-icons/fa';
 import img1 from '../Images/img2.png'
-import img2 from '../Images/img3.png'
+import img2 from '../Images/nft.png'
 import { mobile } from '../responsive';
 
 const Container = styled.div`
@@ -58,11 +58,11 @@ const Button = styled.button`
   padding: 10px 32px;
   color: ${props => props.mode ? 'white' : 'black'};
   border: none;
-  background-color: ${props => props.mode ? 'black' : 'white'};
+  background-color: ${props => props.mode ? '#181818' : 'white'};
   border: ${props => props.mode ? '1px solid white' : '1px solid black'};
 
   &:hover{
-    background-color: ${props => !props.mode ? 'black' : 'white'};
+    background-color: ${props => !props.mode ? '#181818' : 'white'};
     color: ${props => !props.mode ? 'white' : 'black'};
   }
 
@@ -75,9 +75,8 @@ const FooterBox = styled.div`
 const Image = styled.img`
   width: 350px;
   height: 350px;
-  /* border: 1px solid blue; */
   background-position: center;
-  object-fit: cover;
+  object-fit: contain;
 `
 const LeftSection = styled.div`
   flex: 1;

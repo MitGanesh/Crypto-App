@@ -21,9 +21,21 @@ const Container = styled.div`
 const Box = styled.div`
     width: 80%;
     height: 71vh;
-    box-shadow: rgba(255, 255, 255, 0.05) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-
+    border: 1px solid ${props => !props.mode ? 'black' : '#494451'};
+    border-radius: 0px 0px 20px 20px;
     overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 0.5vw;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #7775;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #777;
+    }
 
     ${mobile({
     width: '95%',
@@ -159,7 +171,7 @@ const Home = () => {
             setMainData(res.data);
         }
         makeReq();
-    }, [])
+    })
 
     useEffect(() => {
         const newData = () => {
@@ -202,7 +214,7 @@ const Home = () => {
                 </Center>
                 <Right>MARKET CAP.</Right>
             </Legend>
-            <Box>
+            <Box mode={mode}>
                 {data && searchData.map((item, i) => {
                     return <Card i={i} key={item.id} items={item} mode={mode} />
                 })}
