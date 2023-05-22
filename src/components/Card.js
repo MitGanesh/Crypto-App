@@ -5,10 +5,12 @@ import { mobile } from '../responsive';
 import { motion } from 'framer-motion';
 
 const Wrapper = styled(motion.div)`
-    width: 60%;
+    margin: auto;
+    padding-top: 25px;
+    width: 100%;
 
     ${mobile({
-    width: '95%',
+    width: '100%',
 })}
 `
 
@@ -35,6 +37,7 @@ const Left = styled.div`
 const Wrap = styled.div`
     display: flex;
     flex-direction: column;
+    flex: 1;
 
     ${mobile({
     fontSize: '12px',
@@ -63,6 +66,7 @@ const Symbol = styled.div`
 
 const CurrentValue = styled.div`
     font-family: 'Lato', sans-serif;
+    text-align: right;
     color: ${props => props.mode ? 'white' : 'black'};
 
     ${mobile({
@@ -72,7 +76,7 @@ const CurrentValue = styled.div`
 const Growth = styled.div`
     font-family: 'Lato', sans-serif;
     display: flex;
-    justify-content: center;
+    text-align: left;
     align-items: center;
 `
 
@@ -130,8 +134,8 @@ const Card = (props) => {
             x: 0,
             opacity: 1,
             transition: {
-                delay: 0.05*props.i,
-                duration:0.3,
+                delay: 0.05 * props.i,
+                duration: 0.3,
             }
         }
     }
@@ -141,9 +145,6 @@ const Card = (props) => {
             variants={cardTransition}
             initial="start"
             animate="mid"
-            whileHover={{
-                scale: 1.05,
-            }}
         >
             <Container>
                 <Left>
@@ -155,19 +156,23 @@ const Card = (props) => {
                         <Symbol>{symbol?.toUpperCase()}</Symbol>
                     </Wrap>
                     <Wrap>
-                        <CurrentValue mode={props.mode}>{currencyFormat(current_price)}</CurrentValue>
-                        {current_price - (high_24h + low_24h) / 2 > 0 ? (
+                        {/* <Name mode={props.mode}>{name}</Name> */}
+                        {current_price - ((high_24h + low_24h) / 2) > 0 ? (
                             <Growth style={{ color: '#47c87c' }} ><BsFillCaretUpFill />{variation}%</Growth>
                         ) : (
                             <Growth style={{ color: '#ea3943' }}><BsFillCaretDownFill />{variation}%</Growth>
                         )}
+                    </Wrap>
+                    <Wrap>
+                        <CurrentValue mode={props.mode}>{currencyFormat(current_price)}</CurrentValue>
                     </Wrap>
                 </Center>
                 <Right mode={props.mode}>
                     {currencyFormat(market_cap)}
                 </Right>
             </Container>
-            <HR />
+            {/* <HR/> */}
+            <HR style={{ width: '90%', margin: '20px auto',}} />
         </Wrapper>
     )
 }

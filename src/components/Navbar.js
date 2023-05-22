@@ -1,19 +1,22 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { CgSun, CgMoon, CgSearch } from "react-icons/cg";
+import { CgSun, CgMoon } from "react-icons/cg";
+import { FaTwitter, FaDiscord } from 'react-icons/fa';
 import searchContext from '../Context/searchContext';
 import { mobile } from '../responsive';
 import { motion } from 'framer-motion'
 
 const Container = styled.div`
     margin: 0;
-    padding: 5px 15px;
+    padding: 10px 140px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 65px;
-    background: ${props => props.mode ? '#242526' : 'white'};   
+    min-height: 85px;
+    background: ${props => props.mode ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)'};   
+    backdrop-filter: blur(10px);
     box-shadow: 0 2px 17px rgb(0 0 0 / 7%);
+    z-index: 10;
 
     ${mobile({
     padding: '5px 10px',
@@ -22,27 +25,38 @@ const Container = styled.div`
 `
 const Left = styled.div`
     flex: 1;
-    display: flex;
-
-    ${mobile({
-    display: 'none',
-})}
-`
-const Center = styled.div`
-    flex: 2;
-    text-align: center;
     font-size: 30px;
-    font-family: 'Major Mono Display', monospace;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    /* font-family: 'Major Mono Display', monospace; */
+    background: linear-gradient(200deg, #ff00cc, #3333ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
 
     ${mobile({
     flex: 0,
+})}
+`
+const Center = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+    ${mobile({
+    display: 'none',
 })}
 
 `
 const Right = styled.div`
     flex: 1;
-    text-align: right;
     display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 14px;
 
     ${mobile({
     flex: 0,
@@ -54,18 +68,23 @@ const Logo = styled.span`
 
     ${mobile({
     merginLeft: '0px',
-    fontSize: '22px',
+    fontSize: '28px',
 })}
 `
-const Heading = styled.p`
+const Heading = styled.a`
     margin-right: 10px;
-    font-size: 22px;
+    font-size: 16px;
     cursor: pointer;
+    text-decoration: none;
     font-weight: ${props => props.bold};
     display: flex;
     align-items: center;
     margin-bottom: 0;
     color: ${props => props.mode ? 'white' : 'black'};
+
+    &:hover{
+    color: #2600fc;
+    }
 `
 const Mod = styled.span`
     width: 35px;
@@ -82,68 +101,61 @@ const Mod = styled.span`
         color: black;
     }
 `
-const SearchBar = styled.div`
-    flex: 4;
-    margin: 0px 15px;
-    padding: 5px 15px;
-    border-radius: 50px;
-    background-color: #ebedf0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    ${mobile({
-    margin: '0px 8px',
-    padding: '0px 10px',
-})}
-`
-const Input = styled.input`
-    outline: none;
-    border: none;
-    background: none;
-
-    ${mobile({
-    flex: 1,
-    width: '150px',
-})}
-`
-const Themes = styled(motion.div)`
+const IconWrapper = styled.div`
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
-    flex: 1;
+    align-items: center;
+    cursor: pointer;
+    filter: grayscale(1);
+
+    &:hover {
+        filter: grayscale(0);
+        background-color: #ebedf0;
+    }
+`
+
+const Themes = styled(motion.div)`
+    display: flex;
 `
 
 const Navbar = () => {
 
     const context = useContext(searchContext);
-    const { handleInput, mode, setMode } = context;
+    const { mode, setMode } = context;
 
     const handleMode = () => {
         setMode(!mode)
         if (mode) {
             document.body.style.background = 'white';
         } else {
-            document.body.style.background = '#1b1b1d';
+            document.body.style.background = '#181818';
         }
     }
 
     return (
         <Container className='fixed-top' mode={mode}>
             <Left>
-                <Heading bold={200} mode={mode} >HOME</Heading>
-                {/* <Heading mode={mode}>ABOUT</Heading>
-                <Heading mode={mode}>CONTACT</Heading> */}
+                <Logo mode={mode}>
+                    CRYPTO
+                </Logo>
             </Left>
             <Center>
-                <Logo mode={mode}>
-                    cRypTo
-                </Logo>
+                <Heading href='/' bold={500} mode={mode}>HOME</Heading>
+                <Heading href='#market' bold={500} mode={mode}>MARKET</Heading>
+                <Heading href='#why-crypto' bold={500} mode={mode}>WHY US</Heading>
+                <Heading href='#join' bold={500} mode={mode}>JOIN</Heading>
             </Center>
             <Right>
-                <SearchBar>
-                    <Input placeholder='Seacrh' onChange={(e) => handleInput(e.target.value)} />
-                    <CgSearch style={{ fontSize: '18px' }} />
-                </SearchBar>
+                <IconWrapper>
+                    <FaTwitter onClick={() => window.open('https://twitter.com', '_blank')} size={23} color='#1d9bf0' />
+                </IconWrapper>
+                <IconWrapper>
+                    <FaDiscord onClick={() => window.open('https://discord.com', '_blank')} size={23} color='#5462eb' />
+                </IconWrapper>
                 <Themes
                     animate={{
                         rotate: 360,
