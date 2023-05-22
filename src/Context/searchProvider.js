@@ -5,6 +5,7 @@ const SearchProvider = (props) => {
     const [input, setInput] = useState('');
     const [mainData, setMainData] = useState([]);
     const [mode, setMode] = useState(false);
+    const [dataLoaded, setDataLoaded] = useState(undefined);
 
 
     const handleInput = (value) => {
@@ -12,7 +13,7 @@ const SearchProvider = (props) => {
     }
 
     return (
-        <SearchContext.Provider value={{ input, handleInput, mode, setMode, mainData, setMainData }}>
+        <SearchContext.Provider value={{ input, handleInput, mode, setMode, mainData, setMainData, dataLoaded, setDataLoaded }}>
             {props.children}
         </SearchContext.Provider>
     )

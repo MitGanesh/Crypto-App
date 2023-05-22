@@ -18,7 +18,7 @@ const Box = styled.div`
   flex-direction: column;
 
   ${mobile({
-    gap: '48px',
+  gap: '48px',
   })}
 `
 const TitleBox = styled.div`
@@ -32,10 +32,10 @@ const Heading1 = styled.h1`
   color: ${props => props.mode ? 'white' : 'black'};
 
   ${mobile({
-      fontSize: '50px',
-  })}
+  fontSize: '50px',
+})}
 `
-const Heading2 = styled.h1`
+const Heading2 = styled.span`
   font-size: 42px;
   display: inline;
   margin-left: 14px;
@@ -85,7 +85,7 @@ const LeftSection = styled.div`
   align-items: center;
 
   ${mobile({
-    display: 'none',
+  display: 'none',
 })}
 `
 const CenterSection = styled.div`
@@ -107,7 +107,7 @@ const RightSection = styled.div`
   flex: 1;
 
   ${mobile({
-    display: 'none',
+  display: 'none',
 })}
 `
 
@@ -130,10 +130,10 @@ const JoinUs = () => {
           </LeftSection>
           <CenterSection>
             <SocialIcons>
-              <FaTwitter style={{ cursor: 'pointer' }} size={35} color='#1d9bf0' />
-              <FaDiscord style={{ cursor: 'pointer' }} size={35} color='#5462eb' />
-              <FaFacebook style={{ cursor: 'pointer' }} size={35} color='#1a77f2' />
-              <FaYoutube style={{ cursor: 'pointer' }} size={35} color='#f00' />
+              <FaTwitter onClick={() => window.open('https://twitter.com', '_blank')} style={{ cursor: 'pointer' }} size={35} color='#1d9bf0' />
+              <FaDiscord onClick={() => window.open('https://discord.com', '_blank')} style={{ cursor: 'pointer' }} size={35} color='#5462eb' />
+              <FaFacebook onClick={() => window.open('https://www.facebook.com/facebook', '_blank')} style={{ cursor: 'pointer' }} size={35} color='#1a77f2' />
+              <FaYoutube onClick={() => window.open('https://www.youtube.com', '_blank')} style={{ cursor: 'pointer' }} size={35} color='#f00' />
             </SocialIcons>
             <PrivacyRight>
               <InfoText mode={mode}>

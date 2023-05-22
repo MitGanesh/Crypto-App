@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { CgSun, CgMoon } from "react-icons/cg";
+import { FaTwitter, FaDiscord } from 'react-icons/fa';
 import searchContext from '../Context/searchContext';
 import { mobile } from '../responsive';
 import { motion } from 'framer-motion'
@@ -54,6 +55,8 @@ const Right = styled.div`
     flex: 1;
     display: flex;
     justify-content: end;
+    align-items: center;
+    gap: 14px;
 
     ${mobile({
     flex: 0,
@@ -99,6 +102,22 @@ const Mod = styled.span`
     }
 `
 
+const IconWrapper = styled.div`
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    filter: grayscale(1);
+
+    &:hover {
+        filter: grayscale(0);
+        background-color: #ebedf0;
+    }
+`
+
 const Themes = styled(motion.div)`
     display: flex;
 `
@@ -125,12 +144,18 @@ const Navbar = () => {
                 </Logo>
             </Left>
             <Center>
-                <Heading href='/#' bold={500} mode={mode}>HOME</Heading>
+                <Heading href='/' bold={500} mode={mode}>HOME</Heading>
                 <Heading href='#market' bold={500} mode={mode}>MARKET</Heading>
                 <Heading href='#why-crypto' bold={500} mode={mode}>WHY US</Heading>
                 <Heading href='#join' bold={500} mode={mode}>JOIN</Heading>
             </Center>
             <Right>
+                <IconWrapper>
+                    <FaTwitter onClick={() => window.open('https://twitter.com', '_blank')} size={23} color='#1d9bf0' />
+                </IconWrapper>
+                <IconWrapper>
+                    <FaDiscord onClick={() => window.open('https://discord.com', '_blank')} size={23} color='#5462eb' />
+                </IconWrapper>
                 <Themes
                     animate={{
                         rotate: 360,

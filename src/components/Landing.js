@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import searchContext from '../Context/searchContext';
 import img1 from '../Images/crypto.png'
 import { mobile } from '../responsive';
@@ -26,8 +26,10 @@ const FloatingImg1 = styled.img`
   opacity: 0.6;
 
   ${mobile({
-    left: '-135px',
-  })}
+  left: '-135px',
+  scale: '0.6',
+  top: '-240px',
+})}
 `
 const TitleBox = styled.div`
   display: flex;
@@ -37,8 +39,8 @@ const TitleBox = styled.div`
   justify-content: center;
 
   ${mobile({
-    marginTop: '0px',
-  })}
+  marginTop: '0px',
+})}
 `
 const H1 = styled.div`
   font-size: 60px;
@@ -47,8 +49,8 @@ const H1 = styled.div`
   color: ${props => !props.mode ? '#242526' : 'white'};
 
   ${mobile({
-    fontSize: '55px',
-  })}
+  fontSize: '55px',
+})}
 `
 const SubH1 = styled.div`
   display: inline;
@@ -70,8 +72,8 @@ const GridContainer = styled.div`
   padding: 38px 0px;
 
   ${mobile({
-    flexDirection: 'column',
-  })}
+  flexDirection: 'column',
+})}
 `
 const GridBox = styled.div`
   flex: 1;
@@ -92,6 +94,39 @@ const Heading = styled.h2`
 const Price = styled.p`
   padding: 4px 0px;
   color: ${props => !props.mode ? '#242526' : 'white'};
+`
+
+const AnimationBox = styled.div`
+  overflow-x: hidden;
+`
+const moveText = keyframes`
+  0% {
+    transform: translateX(20%); /* Start position of the text */
+  }
+  100% {
+    transform: translateX(-100%); /* End position of the text */
+  }
+`
+
+const TextContent = styled.p`
+  color: ${props => !props.mode ? 'black' : 'white'};
+  display: inline-block;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 72px;
+  font-weight: 700;
+  white-space: nowrap;
+  animation: ${moveText} 25s linear infinite;
+`
+
+const MainText = styled.span`
+  color: transparent;
+  font-size: 84px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-style: italic;
+  -webkit-text-stroke: ${props => props.mode ? '2px white' : '2px black'};
+  text-stroke: 2px black;
 `
 
 const Landing = () => {
@@ -126,6 +161,11 @@ const Landing = () => {
             </GridBox>
           ))}
         </GridContainer>
+        <AnimationBox>
+          <TextContent mode={mode}>
+            Unleash the Power of <MainText mode={mode}>Crypto</MainText> Explore, Analyze, and <MainText mode={mode}>Invest</MainText> in the World's Leading Digital <MainText mode={mode}>Currencies</MainText> on Our Comprehensive Listing Platform.
+          </TextContent>
+        </AnimationBox>
       </Box>
     </Container>
   )
