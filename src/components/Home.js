@@ -189,7 +189,7 @@ const Home = () => {
             }
         }
         makeReq();
-    }, []);
+    });
 
     useEffect(() => {
         const newData = () => {
