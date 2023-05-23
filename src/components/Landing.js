@@ -98,6 +98,8 @@ const Price = styled.p`
 
 const AnimationBox = styled.div`
   overflow-x: hidden;
+  border-left: 1px solid ${props => !props.mode ? 'black' : '#494451'};
+  border-right: 1px solid ${props => !props.mode ? 'black' : '#494451'};
 `
 const moveText = keyframes`
   0% {
@@ -161,7 +163,7 @@ const Landing = () => {
             </GridBox>
           ))}
         </GridContainer>
-        <AnimationBox>
+        <AnimationBox mode={mode}>
           <TextContent mode={mode}>
             Unleash the Power of <MainText mode={mode}>Crypto</MainText> Explore, Analyze, and <MainText mode={mode}>Invest</MainText> in the World's Leading Digital <MainText mode={mode}>Currencies</MainText> on Our Comprehensive Listing Platform.
           </TextContent>
